@@ -1,7 +1,7 @@
 # C2H5OH
 Wiki for alcohol
 
-This is new project recently I being thinking till dawn.
+This is new personal side project I being thinking till dawn recently.
 Really like this idea but dont know when am I gonna finish this wiki site.
 🙏🙏🙏🙏🙏
 
