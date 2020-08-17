@@ -4,4 +4,15 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\NewFolder\**" />
+    <Content Remove="Data\NewFolder\**" />
+    <EmbeddedResource Remove="Data\NewFolder\**" />
+    <None Remove="Data\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Data\All.csv" />
+  </ItemGroup>
+
 </Project>

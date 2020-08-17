@@ -1,0 +1,48 @@
+﻿@page "/ByName"
+@inject IAllTableManager AllTableManager
+
+<h1>ByName</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (alcoholsColumns == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                @foreach (var col in alcoholsColumns)
+                {
+                    <th>@col</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in alcoholsRows)
+            {
+                <tr>
+                    @foreach (var col in row.ItemArray)
+                    {
+                        <td>@col</td>
+                    }
+                </tr>
+             }
+        </tbody>
+    </table>
+}
+
+@code {
+    private DataColumnCollection alcoholsColumns;
+    private DataRow[] alcoholsRows;
+
+    protected override async Task OnInitializedAsync()
+    {
+        alcoholsColumns = AllTableManager.GetAllTableColumn();
+        alcoholsRows = AllTableManager.GetDrinkFromPartialName("");
+
+        await Task.CompletedTask;
+    }
+}

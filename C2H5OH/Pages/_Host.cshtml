@@ -13,15 +13,13 @@
     <title>C2H5OH</title>
     <base href="~/" />
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <!-- particles.js background css -->
     <link href="css/site.css" rel="stylesheet" />
 </head>
 <body>
-
-    <div class="count-particles">
-        <span class="js-count-particles">--</span> particles
-    </div>
-
-    <!-- particles.js container -->
+    <!-- particles.js background -->
     <div id="particles-js"></div>
 
     <app>
@@ -40,28 +38,9 @@
     </div>
 
     <script src="_framework/blazor.server.js"></script>
-    <!-- scripts -->
-    <script src="js/particles.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/lib/stats.js"></script>
-    <script>
-        var count_particles, stats, update;
-        stats = new Stats;
-        stats.setMode(0);
-        stats.domElement.style.position = 'absolute';
-        stats.domElement.style.left = '0px';
-        stats.domElement.style.top = '0px';
-        document.body.appendChild(stats.domElement);
-        count_particles = document.querySelector('.js-count-particles');
-        update = function () {
-            stats.begin();
-            stats.end();
-            if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
-                count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
-            }
-            requestAnimationFrame(update);
-        };
-        requestAnimationFrame(update);
-    </script>
+    <!-- extra scripts -->
+    <script src="./js/particles.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/lib/stats.js"></script>
 </body>
 </html>
