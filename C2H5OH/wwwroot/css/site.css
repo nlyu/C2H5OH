@@ -8,6 +8,13 @@ html, body {
     font-family: 'Oswald', sans-serif;
     font-weight: 200;
     font-size: 16px;
+    height: 100%;
+    width: 100%;
+}
+
+.main, .content {
+    width: 100%;
+    height: 100%;
 }
 
 a, .btn-link {
@@ -78,3 +85,80 @@ app {
     font-size: var(--nav-font-size);
 }
 
+/* Index */
+.index-main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.index-main-left {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+}
+
+.index-search {
+    border-style: none;
+    border-bottom-style: groove;
+    background-color: lightgrey;
+    opacity: 0.8;
+    height: 100px;
+    width: 300px;
+    position: absolute;
+    margin-top: 254px;
+    right: 0;
+}
+
+.index-title {
+    background-color: lightgrey;
+    opacity: 0.95;
+    height: 100px;
+    width: 300px;
+    left: 0;
+    font-size: 64px;
+}
+
+.index-main-righttop {
+    margin-bottom: 20px;
+    width: 80%;
+}
+
+.index-main-rightbottom {
+    margin-top: 10px;
+    width: 80%;
+}
+
+.index-main-righttop > p, .index-main-rightbottom > p {
+    font-size: 64px;
+    font-family: 'Noto Sans SC';
+    font-weight: 100;
+    color: gray;
+    margin-top: -30px;
+    margin-bottom: -30px;
+
+    transition: transform 0.3s ease;
+    transform: translateX(0px);
+}
+
+.index-main-righttop > p:hover, .index-main-rightbottom > p:hover, .index-main-right-result > p:hover {
+     transform: translateX(30px);
+}
+
+.index-main-right-result > p {
+    font-size: 32px;
+    font-family: 'Noto Sans SC';
+    margin-bottom: -5px;
+    transition: transform 0.3s ease;
+}
+
+.index-main-right-result > p:hover {
+    background-color: lightgray;
+}
+
+.index-main-right {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    margin-left: 50%;
+}

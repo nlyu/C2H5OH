@@ -1,7 +1,64 @@
 ﻿@page "/"
+@inject IAllTableManager AllTableManager
 
-<h1>Hello, world!</h1>
+<div class="index-main">
+    <div class="index-main-left">
+        <input class="index-search" @bind="Search" @oninput="OnSearchChange" />
+    </div>
+    <div class="index-main-right">
+        <div class="index-main-righttop">
+            <p>LIQUOUR</p>
+            <p>DER ALKOHOL</p>
+            <p>ЛИКЁР</p>
+            <p>烈酒</p>
+        </div>
+        <div class="index-main-right-default">
+            <div class="index-title">
+                <p>ALC<spam style="color:red;">O</spam>H<spam style="color:red;">O</spam>L</p>
+            </div>
+        </div>
+        @if (alcoholsColumns == null || string.IsNullOrEmpty(Search))
+        {
+            <div class="index-main-rightbottom">
+                <p>リキュール</p>
+                <p>리큐어</p>
+                <p>ليكيور</p>
+                <p>Mo wotsekemera</p>
+            </div>
+        }
+        else
+        {
+            <div class="index-main-rightbottom">
+                <div class="index-main-right-result">
+                    @foreach (var row in alcoholsRows)
+                    {
+                        <p>@row[0]</p>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
 
-Welcome to your new app.
+@code {
+    public string Search { get; set; }
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    private DataColumnCollection alcoholsColumns;
+    private DataRow[] alcoholsRows;
+
+    protected override async Task OnInitializedAsync()
+    {
+        alcoholsColumns = AllTableManager.GetAllTableColumn();
+        alcoholsRows = AllTableManager.GetDrinkFromPartialName("");
+
+        await Task.CompletedTask;
+    }
+
+    private Task OnSearchChange(ChangeEventArgs e)
+    {
+        Search = e.Value.ToString();
+        alcoholsRows = AllTableManager.GetDrinkFromPartialName(Search);
+
+        return Task.CompletedTask;
+    }
+}
