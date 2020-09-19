@@ -3,27 +3,42 @@
 
 <div class="index-main">
     <div class="index-main-left">
-        <input class="index-search" @bind="Search" @oninput="OnSearchChange" />
+        <div class="index-title">
+            <p>ALC<spam style="color:red;">O</spam>H<spam style="color:red;">O</spam>L</p>
+        </div>
     </div>
     <div class="index-main-right">
         <div class="index-main-righttop">
-            <p>LIQUOUR</p>
+            <p id="medium-text">LIQUOUR</p>
             <p>DER ALKOHOL</p>
             <p>ЛИКЁР</p>
-            <p>烈酒</p>
+            <p id="large-text">LIQUOR</p>
+            <p id="medium-text">烈酒</p>
         </div>
         <div class="index-main-right-default">
-            <div class="index-title">
-                <p>ALC<spam style="color:red;">O</spam>H<spam style="color:red;">O</spam>L</p>
+            <div class="index-search-wrap">
+                <input class="index-search" placeholder="Enter" @bind="Search" @oninput="OnSearchChange" />
+                <p class="content-name" style="display:@(ShowResult.ToString());">MADE IN CHINA</p>
             </div>
         </div>
         @if (alcoholsColumns == null || string.IsNullOrEmpty(Search))
         {
             <div class="index-main-rightbottom">
-                <p>リキュール</p>
-                <p>리큐어</p>
+                <p>じょうりゅうしゅ</p>
+                <p>L'Eau-De-Vie</p>
+                <p>증류주</p>
                 <p>ليكيور</p>
-                <p>Mo wotsekemera</p>
+                <p>Mo Wotsekemera</p>
+                <p>Rượu Chưng Cất</p>
+                <p>Băutură</p>
+                <p id="large-text">Bebida Alcohólica</p>
+                <p id="medium-text">מאַשקע</p>
+                <p>Sayar Da Giya</p>
+                <p id="medium-text">शराब</p>
+                <p>Espíritu</p>
+                <p>Alkoholnih Pijač</p>
+                <p>Brennevin</p>
+                <p id="large-text">Alkohol</p>
             </div>
         }
         else
@@ -32,16 +47,29 @@
                 <div class="index-main-right-result">
                     @foreach (var row in alcoholsRows)
                     {
-                        <p>@row[0]</p>
+                        <p @onclick="@(e => OnResultClick(row[0]))">@row[0]</p>
                     }
                 </div>
             </div>
         }
     </div>
+    <div class="index-main-right-content" style="display:@(ShowResult.ToString());">
+        <div class="content-upper">
+            <div class="content-upper-p">
+                <p id="proof-text">PROOF: 45%</p>
+                <p id="region-text">ORIGIN: CHINA</p>
+            </div>
+        </div>
+        <div class="content-bottom">
+             <p id="discription-text">Wine is an alcoholic drink typically made from fermented grape juice. Yeast consumes the sugar in the grapes and converts it to ethanol, carbon dioxide, and heat. Different varieties of grapes and strains of yeasts produce different styles of wine. These variations result from the complex interactions between the biochemical development of the grape, the reactions involved in fermentation, the grape's growing environment (terroir), and the production process. Many countries enact legal appellations intended to define styles and qualities of wine. These typically restrict the geographical origin and permitted varieties of grapes, as well as other aspects of wine production. Wines not made from grapes involve fermentation of additional crops including, rice wine and other fruit wines such as plum, cherry, pomegranate, currant and elderberry.</p>
+        </div>
+    </div>
 </div>
 
 @code {
     public string Search { get; set; }
+    public string Result { get; set; }
+    public string ShowResult { get; set; }
 
     private DataColumnCollection alcoholsColumns;
     private DataRow[] alcoholsRows;
@@ -50,6 +78,7 @@
     {
         alcoholsColumns = AllTableManager.GetAllTableColumn();
         alcoholsRows = AllTableManager.GetDrinkFromPartialName("");
+        ShowResult = "none";
 
         await Task.CompletedTask;
     }
@@ -59,6 +88,14 @@
         Search = e.Value.ToString();
         alcoholsRows = AllTableManager.GetDrinkFromPartialName(Search);
 
+        return Task.CompletedTask;
+    }
+
+    private Task OnResultClick(object e)
+    {
+        ShowResult = "block";
+        Result = e.ToString();
+        alcoholsRows = AllTableManager.GetDrinkFromPartialName(Result);
         return Task.CompletedTask;
     }
 }
