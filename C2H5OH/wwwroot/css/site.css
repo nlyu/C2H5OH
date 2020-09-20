@@ -218,6 +218,7 @@ a, .btn-link {
 }
 
 .content-name {
+    color: #c96d6d;
     position: absolute;
     right: 0px;
 }
@@ -231,8 +232,9 @@ a, .btn-link {
 
 .content-upper-p > p {
     margin: 0;
-    margin-top: -30px;
-    font-size: 60px;
+    margin-left: 10px;
+    margin-top: -20px;
+    font-size: 50px;
     color: grey;
 }
 .content-bottom {
@@ -241,4 +243,60 @@ a, .btn-link {
     border-left-color: lightcoral;
     border-left-style: dashed;
     color: grey;
+}
+
+.content-bottom-bottom-type {
+    background-color: lightgrey;
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    left: 20px;
+    border-top-color: lightcoral;
+    border-top-style: solid;
+}
+
+.content-bottom-bottom-region {
+    background-color: lightgrey;
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    left: 240px;
+    border-top-color: lightcoral;
+    border-top-style: solid;
+}
+
+.content-bottom-bottom p{
+    margin-left: 10px;
+}
+
+.content-bottom-title {
+    margin: -20px;
+    margin-left: 10px;
+    font-size: 80px;
+    color: grey;
+}
+
+.content-bottom-bottom-large-text {
+    font-size: 30px;
+}
+
+#discription-text-title {
+    font-size: 30px;
+    margin-left: 10px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+#discription-text {
+    margin-left: 10px;
+}
+
+#type-text {
+    margin-top: 0px;
+    font-size: 20px;
+}
+
+#since-text {
+    margin-top: 0px;
+    font-size: 20px;
 }
